@@ -1,0 +1,12 @@
+﻿@{
+	ViewData["title"] = "Confirmar remoção do produto";
+}
+@model ProdutoModel
+<div>
+	<h3>
+		Realmente deseja remover o produto: ?
+	</h3>
+</div>
+
+<a type="submit" class="btn btn-primary">Sim</a>
+<a type="submit" class="btn btn-secondary" asp-action="Index" asp-controller="Ver">Não, voltar</a>
