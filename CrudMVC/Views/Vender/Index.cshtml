@@ -6,4 +6,30 @@
 <div class="text-center">
     <h1 class="display-4">Vender Produtos</h1>
     <p>Aqui você pode vender produtos</p>
+    @section Head {
+        <link rel="stylesheet" href="~/css/TelaVendas.css" />
+    }
+    <div>
+
+        <p>Código</p>
+        <input type="number" name="codigo" value="" />
+
+        <div class="BarraItensProdutosTotal">
+            <div>
+            <p>Quantidade</p>
+            <input type="type" name="name" value="" />
+            </div>
+            <p>x</p>
+            <div>
+            <p>Valor Unitário</p>
+            <input type="type" name="name" value="" />
+            </div>
+            <p>=</p>
+            <div>
+            <p>Total Bruto</p>
+            <input type="type" name="name" value="" />
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Vender</button>
+    </div>
 </div>

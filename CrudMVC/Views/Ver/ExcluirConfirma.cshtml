@@ -4,9 +4,13 @@
 @model ProdutoModel
 <div>
 	<h3>
-		Realmente deseja remover o produto: ?
+		Realmente deseja remover o produto "@Model.Nome" da lista de produtos?
 	</h3>
-</div>ouyg
+</div>
 
-<a type="submit" class="btn btn-primary">Sim</a>
-<a type="submit" class="btn btn-secondary" asp-action="Index" asp-controller="Ver">Não, voltar</a>
+<form asp-controller="Ver" asp-action="ApagarProduto" method="post">
+	<input type="hidden" asp-for="Id" />
+	<button type="submit" class="btn btn-primary">Sim</button>
+	<a type="submit" class="btn btn-secondary" asp-action="Index" asp-controller="Ver">Não, voltar</a>
+</form>
+

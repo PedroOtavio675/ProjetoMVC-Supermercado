@@ -6,5 +6,13 @@ namespace CrudMVC.Ropositorio
     {
         List<ProdutoModel> BuscarProdutos();
         ProdutoModel Adicionar(ProdutoModel produto);
+
+        ProdutoModel BuscarProduto(int id);
+
+        bool EditarProduto(ProdutoModel produto);
+
+        bool ApagarProduto(int id);
+
+        ProdutoModel DarBaixaNoEstoque(int id, int quantidade);
     }
 }

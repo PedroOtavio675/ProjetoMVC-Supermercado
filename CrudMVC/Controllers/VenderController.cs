@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CrudMVC.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CrudMVC.Controllers
 {
@@ -7,6 +8,10 @@ namespace CrudMVC.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+        public IActionResult Vender(VendaModel vendaProduto)
+        {
+
         }
     }
 }

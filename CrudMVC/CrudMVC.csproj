@@ -11,12 +11,16 @@
   <ItemGroup>
     <Compile Remove="Views\Atualizar\**" />
     <Compile Remove="Views\Remover\**" />
+    <Compile Remove="wwwroot\css\NovaPasta\**" />
     <Content Remove="Views\Atualizar\**" />
     <Content Remove="Views\Remover\**" />
+    <Content Remove="wwwroot\css\NovaPasta\**" />
     <EmbeddedResource Remove="Views\Atualizar\**" />
     <EmbeddedResource Remove="Views\Remover\**" />
+    <EmbeddedResource Remove="wwwroot\css\NovaPasta\**" />
     <None Remove="Views\Atualizar\**" />
     <None Remove="Views\Remover\**" />
+    <None Remove="wwwroot\css\NovaPasta\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,6 +30,7 @@
 
   <ItemGroup>
     <Content Remove="Models\ProdutoModel.cshtml" />
+    <Content Remove="wwwroot\css\TelaDeVendas.css" />
   </ItemGroup>
 
   <ItemGroup>
