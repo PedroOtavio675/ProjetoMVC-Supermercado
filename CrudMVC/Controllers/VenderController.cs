@@ -11,7 +11,7 @@ namespace CrudMVC.Controllers
         }
         public IActionResult Vender(VendaModel vendaProduto)
         {
-
+            return View();
         }
     }
 }
