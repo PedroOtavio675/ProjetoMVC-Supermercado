@@ -11,5 +11,7 @@ namespace CrudMVC.Data
             
         }
         public DbSet<ProdutoModel> Produto { get; set; }
+        public DbSet<VendaModel> Venda { get; set; }
+       
     }
 }

@@ -1,0 +1,18 @@
+﻿@{
+	ViewData["title"] = "Confirmar remoção do produto";
+}
+@model VendaModel
+<div>
+	<h3>
+		Realmente deseja remover a venda de ID: "@Model.Id" da lista de produtos?
+	</h3>
+</div>
+
+<form asp-controller="HistoricoVendas"
+	  asp-action="ExcluirVenda"
+	  method="post">
+	<input type="hidden" asp-for="Id" />
+	<button type="submit" class="btn btn-primary">Sim</button>
+	<a type="submit" class="btn btn-secondary" asp-action="Index" asp-controller="Ver">Não, voltar</a>
+</form>
+

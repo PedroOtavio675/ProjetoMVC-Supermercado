@@ -68,7 +68,7 @@ namespace CrudMVC.Ropositorio
         {
             ProdutoModel produto = BuscarProduto(id);
 
-            if(quantidade < produto.Estoque)
+            if(quantidade <= produto.Estoque)
             {
                 produto.Estoque = produto.Estoque - quantidade;
             }

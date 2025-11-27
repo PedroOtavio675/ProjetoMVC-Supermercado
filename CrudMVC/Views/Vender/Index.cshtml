@@ -1,35 +1,143 @@
 ﻿@{
-    ViewData["Title"] = "Atualizar Produtos";
+	ViewData["Title"] = "Vender Produtos";
 }
-@model HomeModel
+@model VendaModel
+@if (ViewData["MensagemSucesso"] != null)
+{
+	<div class="alert alert-success" role="alert">
+		@ViewData["MensagemSucesso"]
+	</div>
+}
 
+@if (ViewData["MensagemErro"] != null)
+{
+	<div class="alert alert-danger" role="alert">
+		@ViewData["MensagemErro"]
+	</div>
+}
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 <div class="text-center">
-    <h1 class="display-4">Vender Produtos</h1>
-    <p>Aqui você pode vender produtos</p>
-    @section Head {
-        <link rel="stylesheet" href="~/css/TelaVendas.css" />
-    }
-    <div>
+	<h1 class="display-4">Vender Produtos</h1>
+	<p>Aqui você pode vender produtos</p>
+	@section Head {
+		<link rel="stylesheet" href="~/css/TelaVendas.css" />
+	}
+	<div>
 
-        <p>Código</p>
-        <input type="number" name="codigo" value="" />
+		<p>Código</p>
+		<form asp-action="BuscarProduto" asp-controller="Vender" method="get">
+			<input type="number" name="Id" value="" />
+			<span asp-validation-for="Id" class="text-danger"></span>
+			<button type="submit" class="btn btn-primary">Buscar produto</button>
 
-        <div class="BarraItensProdutosTotal">
-            <div>
-            <p>Quantidade</p>
-            <input type="type" name="name" value="" />
-            </div>
-            <p>x</p>
-            <div>
-            <p>Valor Unitário</p>
-            <input type="type" name="name" value="" />
-            </div>
-            <p>=</p>
-            <div>
-            <p>Total Bruto</p>
-            <input type="type" name="name" value="" />
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Vender</button>
-    </div>
+		</form>
+	
+	@if (Model.Produto == null)
+			{
+			<p>Busque por um produto</p>
+		}
+		else
+		{
+			
+
+
+			<table class="table">
+					
+						<thead>
+
+							<tr>
+								<th scope="col">Codigo</th>
+								<th scope="col">Nome</th>
+
+								<th scope="col">Estoque</th>
+								<th scope="col">Preço</th>
+								<th scope="col"></th>
+								<th scope="col">Quantidade</th>
+								<th scope="col"></th>
+								<th scope="col">Total</th>
+								<th scope="col">Remover</th>
+							</tr>
+						</thead>
+						<tbody>
+
+
+
+							<tr>
+								<th scope="row">@Model.Produto.Id</th>
+
+								<td>@Model.Produto.Nome</td>
+
+								<td>@Model.Produto.Estoque</td>
+					
+								<td>
+									<input id="inputValorUnitario" asp-for="ValorUnitario" readonly type="type" value="@Model.Produto.Preco" />
+								</td>
+								<td>x</td>
+								<td>
+									<input id="inputQuantidade" asp-for="Quantidade" value="1" type="number" />
+								</td>
+								<td>=</td>
+								<td>
+									<input id="inputTotal" readonly type="type" name="name" value="" />
+								</td>
+								<td>
+									<div class="btn-group">
+								<a class="btn btn-danger" href="@Url.Action("")">Remover</a>
+
+									</div>
+								</td>
+							</tr>
+
+						</tbody>
+					
+				
+			</table>
+			
+		 
+				
+			<form method="post" asp-action="RegistrarVenda" asp-controller="Vender">
+				<input type="hidden" asp-for="ProdutoId" />
+				<input type="hidden" asp-for="Quantidade" id="inputQuantidadeFormulario" />
+				<input type="hidden" value="@Model.Produto.Preco" asp-for="ValorUnitario" id="inputValorUnitarioFormulario" />
+				<input type="hidden" asp-for="ValorTotal" id="inputTotalFormulario" />
+				<button type="submit" class="btn btn-primary">Vender</button>			
+		</form>
+			@section Scripts {
+				<script>
+
+
+					let inputQuantidade = document.getElementById("inputQuantidade");
+					let inputValorUnitario = document.getElementById("inputValorUnitario");
+				
+					let inputTotal = document.getElementById("inputTotal");
+					let inputQuantidadeFormulario = document.getElementById("inputQuantidadeFormulario");
+					let inputTotalFormulario = document.getElementById("inputTotalFormulario")
+					function calcularValorTotal(quantidade, valorUnitario) {
+						return (quantidade * valorUnitario).toFixed(2)
+					}
+					function atualizarTotal() {
+						let quantidade = parseFloat(inputQuantidade.value.replace(",", ".")) || 0;
+						let valor = parseFloat(inputValorUnitario.value.replace(",", ".")) || 0;
+
+						let totalCalculado = calcularValorTotal(quantidade, valor)
+						inputQuantidadeFormulario.value = quantidade
+						
+						inputTotal.value = totalCalculado.replace(".", ",")
+					    inputTotalFormulario.value = totalCalculado
+					}
+
+					document.addEventListener("DOMContentLoaded", function () {
+						inputQuantidade.addEventListener("input", atualizarTotal );
+						inputValorUnitario.addEventListener("input", atualizarTotal );
+                        
+						atualizarTotal();
+					})
+
+
+				</script>
+			}
+		}
+		
+	</div>
+
 </div>

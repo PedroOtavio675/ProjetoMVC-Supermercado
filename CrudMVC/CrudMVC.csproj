@@ -10,15 +10,19 @@
 
   <ItemGroup>
     <Compile Remove="Views\Atualizar\**" />
+    <Compile Remove="Views\NovaPasta\**" />
     <Compile Remove="Views\Remover\**" />
     <Compile Remove="wwwroot\css\NovaPasta\**" />
     <Content Remove="Views\Atualizar\**" />
+    <Content Remove="Views\NovaPasta\**" />
     <Content Remove="Views\Remover\**" />
     <Content Remove="wwwroot\css\NovaPasta\**" />
     <EmbeddedResource Remove="Views\Atualizar\**" />
+    <EmbeddedResource Remove="Views\NovaPasta\**" />
     <EmbeddedResource Remove="Views\Remover\**" />
     <EmbeddedResource Remove="wwwroot\css\NovaPasta\**" />
     <None Remove="Views\Atualizar\**" />
+    <None Remove="Views\NovaPasta\**" />
     <None Remove="Views\Remover\**" />
     <None Remove="wwwroot\css\NovaPasta\**" />
   </ItemGroup>
@@ -26,6 +30,7 @@
   <ItemGroup>
     <Compile Remove="Controllers\AtualizarController.cs" />
     <Compile Remove="Controllers\RemoverController.cs" />
+    <Compile Remove="Models\ItemVendaModel.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,6 +50,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.22.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
   </ItemGroup>
 

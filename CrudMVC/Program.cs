@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddHttpContextAccessor();
 //Obter a string de conexão 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
@@ -17,6 +17,17 @@ builder.Services.AddDbContext<BancoContext>(options =>
    
 );
 builder.Services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+builder.Services.AddScoped<IVendaRepositorio, VendaRepositorio>();
+
+
+builder.Services.AddDistributedMemoryCache(); // Cache necessário para a Sessão
+builder.Services.AddSession(options => // Configuração da Sessão
+{
+    options.Cookie.HttpOnly = true;
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+});
+
+// ...
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,9 +41,12 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseRouting();
 
+
 app.UseAuthorization();
 
 app.MapStaticAssets();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",
