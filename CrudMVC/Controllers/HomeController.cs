@@ -18,8 +18,7 @@ namespace CrudMVC.Controllers
 
             HomeModel home = new HomeModel();
 
-            home.Nome = "Pedro Otávio";
-            home.Email = "pedro@gmail.com";
+         
 
             return View(home);
         }

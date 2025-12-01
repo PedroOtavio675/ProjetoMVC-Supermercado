@@ -30,7 +30,6 @@
   <ItemGroup>
     <Compile Remove="Controllers\AtualizarController.cs" />
     <Compile Remove="Controllers\RemoverController.cs" />
-    <Compile Remove="Models\ItemVendaModel.cs" />
   </ItemGroup>
 
   <ItemGroup>

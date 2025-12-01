@@ -3,6 +3,7 @@ using System;
 using CrudMVC.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CrudMVC.Migrations
 {
     [DbContext(typeof(BancoContext))]
-    partial class BancoContextModelSnapshot : ModelSnapshot
+    [Migration("20251128000106_VenderVariosProdutosDeUmaVez")]
+    partial class VenderVariosProdutosDeUmaVez
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,10 +28,7 @@ namespace CrudMVC.Migrations
             modelBuilder.Entity("CrudMVC.Models.ItemVendaModel", b =>
                 {
                     b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ProdutoId")
                         .HasColumnType("integer");
@@ -42,14 +42,9 @@ namespace CrudMVC.Migrations
                     b.Property<decimal>("ValorUnitario")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("VendaId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ProdutoId");
-
-                    b.HasIndex("VendaId");
 
                     b.ToTable("ItemVenda");
                 });
@@ -99,15 +94,15 @@ namespace CrudMVC.Migrations
 
             modelBuilder.Entity("CrudMVC.Models.ItemVendaModel", b =>
                 {
-                    b.HasOne("CrudMVC.Models.ProdutoModel", "Produto")
-                        .WithMany()
-                        .HasForeignKey("ProdutoId")
+                    b.HasOne("CrudMVC.Models.VendaModel", "Venda")
+                        .WithMany("Itens")
+                        .HasForeignKey("Id")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("CrudMVC.Models.VendaModel", "Venda")
-                        .WithMany("ItensVenda")
-                        .HasForeignKey("VendaId")
+                    b.HasOne("CrudMVC.Models.ProdutoModel", "Produto")
+                        .WithMany()
+                        .HasForeignKey("ProdutoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -118,7 +113,7 @@ namespace CrudMVC.Migrations
 
             modelBuilder.Entity("CrudMVC.Models.VendaModel", b =>
                 {
-                    b.Navigation("ItensVenda");
+                    b.Navigation("Itens");
                 });
 #pragma warning restore 612, 618
         }

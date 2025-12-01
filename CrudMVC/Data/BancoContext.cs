@@ -12,6 +12,18 @@ namespace CrudMVC.Data
         }
         public DbSet<ProdutoModel> Produto { get; set; }
         public DbSet<VendaModel> Venda { get; set; }
-       
+
+        public DbSet<ItemVendaModel> ItemVenda { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            // Relacionamento Venda -> Itens
+            modelBuilder.Entity<VendaModel>()
+                .HasMany(v => v.ItensVenda)
+                .WithOne(i => i.Venda)
+                .HasForeignKey(i => i.VendaId);
+
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }

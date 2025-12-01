@@ -9,16 +9,11 @@ namespace CrudMVC.Models
 
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Coloque um código válido")]
-        public int ProdutoId { get; set; }
-
-        [ForeignKey("ProdutoId")]
-
-        [ValidateNever]
-        public ProdutoModel Produto { get; set; }
-        public decimal ValorTotal { get; set; }
-        public decimal ValorUnitario { get; set; }
-        public int Quantidade { get; set; }
+        public decimal TotalGeral {  get; set; }
+        public List<ItemVendaModel> ItensVenda { get; set; } = new List<ItemVendaModel>();
+       
         public DateTime Data { get; set; } = DateTime.UtcNow;
+
+       
     }
 }

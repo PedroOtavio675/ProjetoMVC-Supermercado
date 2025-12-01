@@ -1,5 +1,4 @@
-﻿
-@model List<VendaModel>
+﻿@model List<VendaModel>
 
 <h1>Historico de vendas</h1>
 @if(Model != null)
@@ -20,12 +19,12 @@
             </tr>
         </thead>
         <tr> 
-            <th scope="row">@venda.Id</th>
-            <td>@venda.ProdutoId</td>
-            <td>@venda.ValorUnitario</td>
-            <td>@(@venda.ValorTotal / 100)</td>
+            @* <th scope="row">@venda.Id</th>
+            <td>@venda.</td>
+            <td>@venda.PrecoUnitario</td>
+            <td>@(venda.ValorTotal / 100)</td>
             <td>@venda.Quantidade</td>
-            <td>@venda.Data</td>
+            <td>@venda.Data</td> *@
             <td>
                 <div class="btn-group">
                         <a type="button" class="btn btn-danger" asp-route-id="@venda.Id" asp-action="ExcluirConfirma" asp-controller="HistoricoVendas">Remover</a>

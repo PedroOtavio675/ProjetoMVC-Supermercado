@@ -33,6 +33,8 @@ namespace CrudMVC.Ropositorio
 
         public VendaModel RegistrarVenda(VendaModel venda)
         {
+            
+     
             _bancoContext.Venda.Add(venda);
             _bancoContext.SaveChanges();
             return venda;
