@@ -12,6 +12,12 @@ namespace CrudMVC.Ropositorio
             _bancoContext = bancoContext;
         }
 
+        public ItemVendaModel BuscarItensVenda(int id)
+        {
+
+            return _bancoContext.ItemVenda.FirstOrDefault(x => x.VendaId == id);
+        }
+
         public VendaModel BuscarVenda(int id)
         {
             return _bancoContext.Venda.FirstOrDefault(x => x.Id ==  id);

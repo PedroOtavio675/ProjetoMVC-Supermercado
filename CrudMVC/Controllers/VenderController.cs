@@ -42,6 +42,11 @@ namespace CrudMVC.Controllers
                 ModelState.AddModelError("", "Produto não encontrado");
                 return RedirectToAction("Index");
             }
+            if(produto.Estoque < quantidade)
+            {
+                ModelState.AddModelError("", "Produto sem estoque");
+                return RedirectToAction("Index");
+            }
             List<ItemVendaModel> itens = HttpContext.Session.GetObject<List<ItemVendaModel>>("itens");
             if (itens == null)
             {

@@ -8,6 +8,7 @@
 		@ViewData["MensagemSucesso"]
 	</div>
 }
+@Html.ValidationSummary()
 
 @if (ViewData["MensagemErro"] != null)
 {
@@ -70,13 +71,13 @@
 				}
 				</tbody>
 				<tbody>
-					<th></th>
-					<th></th>
-			<th></th>
-			<th></th>
-			<th></th>
-			<th>total: @Model.Sum(i => i.TotalItem)</th>
-			<th></th>
+					<td></td>
+					<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td>total: @Model.Sum(i => i.TotalItem)</td>
+			<td></td>
 				</tbody>
 
 			</table>

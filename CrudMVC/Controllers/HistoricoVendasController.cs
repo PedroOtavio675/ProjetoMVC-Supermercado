@@ -1,4 +1,5 @@
-﻿using CrudMVC.Ropositorio;
+﻿using CrudMVC.Models;
+using CrudMVC.Ropositorio;
 using Microsoft.AspNetCore.Mvc;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -15,9 +16,16 @@ namespace CrudMVC.Controllers
         public IActionResult Index()
         {
             var vendas = _vendaRepositorio.ListarVendas();
+            
+        
+         
             return View(vendas);
         }
-
+        public IActionResult VerProdutos(int id)
+        {
+           var itens = _vendaRepositorio.BuscarItensVenda(id);
+            return View(itens);
+        }
         public IActionResult ExcluirConfirma(int id)
         {
             var vendaRemove = _vendaRepositorio.BuscarVenda(id);
