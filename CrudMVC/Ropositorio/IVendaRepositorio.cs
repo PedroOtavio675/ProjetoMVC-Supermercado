@@ -8,7 +8,7 @@ namespace CrudMVC.Ropositorio
 
         public VendaModel BuscarVenda(int id);
         public List<VendaModel> ListarVendas();
-        public ItemVendaModel BuscarItensVenda(int id);
+        public List<ItemVendaModel> BuscarItensVenda(int id);
 
         public bool ExcluirConfirma(int id);
     }

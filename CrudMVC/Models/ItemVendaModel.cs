@@ -13,6 +13,8 @@ namespace CrudMVC.Models
       
         public VendaModel Venda { get; set; }
 
+        public string Nome { get; set;  }
+
         public int VendaId { get; set; }
         public int ProdutoId { get; set; }
 

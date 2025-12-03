@@ -4,12 +4,8 @@
 @model List<ItemVendaModel>
 
 <div class="text-center">
-    <h1 class="display-4">Produtos</h1>
-    <p>Aqui você pode ver produtos</p>
-
-    <div class="d-grid gap-z d-md-flex justify-content-md-start">
-        <a type="button" class="btn btn-primary" asp-controller="Cadastrar" asp-action="Index">Adicionar produto</a>
-    </div>
+    <h1 class="display-4">Produtos vendidos na venda</h1>
+   
 
     <table class="table">
         <thead>
@@ -26,15 +22,21 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <th scope="row">@item.Id</th>
+                        <th scope="row">@item.ProdutoId</th>
 
-                        <td>@item.Produto</td>
+                        <td>@item.Nome</td>
                         <td>@item.ValorUnitario</td>
                         <td>@item.Quantidade</td>
                       
                     </tr>
+
                 }
-         
+        <td></td>
+        <td></td>
+        <th>total: @Model.Sum(i => i.TotalItem)</th>
+        <td></td>
+        
+       
         </tbody>
     </table>
 </div>

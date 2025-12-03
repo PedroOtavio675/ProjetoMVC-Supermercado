@@ -24,6 +24,7 @@ namespace CrudMVC.Controllers
         public IActionResult VerProdutos(int id)
         {
            var itens = _vendaRepositorio.BuscarItensVenda(id);
+            
             return View(itens);
         }
         public IActionResult ExcluirConfirma(int id)

@@ -58,6 +58,7 @@ namespace CrudMVC.Controllers
                 Id = 0,
                 ProdutoId = produto.Id,
                 Quantidade = quantidade,
+                Nome = produto.Nome,
                 ValorUnitario = produto.Preco,
                 TotalItem = quantidade * produto.Preco
             };
@@ -85,7 +86,7 @@ namespace CrudMVC.Controllers
             var itens = HttpContext.Session.GetObject<List<ItemVendaModel>>("itens");
             if (itens == null || itens.Count == 0)
             {
-                ViewData["MenssagemErro"] = "Nenhum item adicionado!";
+                TempData["MenssagemErro"] = "Nenhum item adicionado!";
                 return RedirectToAction("Index");
             }
             foreach (var item in itens)
@@ -109,7 +110,7 @@ namespace CrudMVC.Controllers
             }
             HttpContext.Session.Remove("itens");
 
-            ViewData["MensagemSucesso"] = "Venda Finalizado";
+            TempData["MensagemSucesso"] = "Venda Finalizado";
             return RedirectToAction("Index");
         }
     }

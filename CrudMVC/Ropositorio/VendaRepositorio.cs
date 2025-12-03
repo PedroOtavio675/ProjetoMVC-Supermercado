@@ -12,10 +12,10 @@ namespace CrudMVC.Ropositorio
             _bancoContext = bancoContext;
         }
 
-        public ItemVendaModel BuscarItensVenda(int id)
+        public List<ItemVendaModel> BuscarItensVenda(int id)
         {
 
-            return _bancoContext.ItemVenda.FirstOrDefault(x => x.VendaId == id);
+            return _bancoContext.ItemVenda.Where(x => x.VendaId == id).ToList();
         }
 
         public VendaModel BuscarVenda(int id)
@@ -45,6 +45,7 @@ namespace CrudMVC.Ropositorio
             _bancoContext.SaveChanges();
             return venda;
         }
+
         
     }
 }
