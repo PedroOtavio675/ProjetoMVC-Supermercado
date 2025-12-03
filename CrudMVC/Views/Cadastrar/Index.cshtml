@@ -16,9 +16,9 @@
     </div>
 }
 
-<div class="text-center">
+<div class="text-center quadradoCadastro">
     <h1 class="display-4">Cadastrar</h1>
-    <p>Aqui você pode cadastrar produtos</p>
+    <p class="texto">Aqui você pode cadastrar produtos</p>
 
     <form asp-controller="Cadastrar" asp-action="Criar" method="post">
         <div class="mb-3">
@@ -37,7 +37,7 @@
             <span asp-validation-for="Estoque" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
-        <a type="submit" class="btn btn-secondary" asp-action="Index" asp-controller="Ver">Voltar</a>
+        <a type="submit" class="btn btn-primary" asp-action="Index" asp-controller="Ver">Voltar</a>
     </form>
     @section Scripts {
         @{
