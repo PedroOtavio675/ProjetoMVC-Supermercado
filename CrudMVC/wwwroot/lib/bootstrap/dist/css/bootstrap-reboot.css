@@ -414,6 +414,7 @@ svg {
 table {
   caption-side: bottom;
   border-collapse: collapse;
+  border-bottom-left-radius: 10px;
 }
 
 caption {

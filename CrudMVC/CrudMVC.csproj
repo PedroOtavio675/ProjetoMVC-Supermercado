@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <Content Remove="Models\ProdutoModel.cshtml" />
+    <Content Remove="wwwroot\css\historicoDeVendas.cs" />
     <Content Remove="wwwroot\css\TelaDeVendas.css" />
   </ItemGroup>
 

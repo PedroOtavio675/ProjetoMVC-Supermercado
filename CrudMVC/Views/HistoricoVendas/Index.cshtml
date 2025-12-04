@@ -1,14 +1,12 @@
 ﻿@model List<VendaModel>
 
-<h1>Historico de vendas</h1>
+<h1 class="historico">Histórico de vendas</h1>
 @if(Model != null)
 {
-    @foreach (VendaModel venda in Model)
-    {
-        
+    <div class="retanguloVenda">
     <table class="table">
         <thead>
-            <tr>
+                <tr >
                 <th scope="col">Codigo da venda</th>
               
 
@@ -19,12 +17,14 @@
                 <th scope="col">Remover</th>
             </tr>
         </thead>
+        @foreach (VendaModel venda in Model)
+        {
         <tr> 
             <th scope="row">@venda.Id</th>
             <td>@(venda.TotalGeral)</td>
                 <td>@venda.Data</td>
             <td>
-                    <a type="button" class="btn btn-success" asp-route-id="@venda.Id" asp-action="VerProdutos" asp-controller="HistoricoVendas">Ver itens da venda</a>
+                    <a type="button" class="btn btn-primary" asp-route-id="@venda.Id" asp-action="VerProdutos" asp-controller="HistoricoVendas">Ver itens da venda</a>
             </td>
           
             <td>
@@ -33,8 +33,9 @@
                 </div>
             </td>
         </tr>
-        </table>
     }
+        </table>
+    </div>
 }
 else
 {
