@@ -17,11 +17,16 @@ namespace CrudMVC.Ropositorio
 
             return _bancoContext.ItemVenda.Where(x => x.VendaId == id).ToList();
         }
-
+        public List<VendaModel> BuscarVendasPorData(DateTime data)
+        {
+            var tudo = _bancoContext.Venda.ToList();
+            return tudo.Where(x => x.Data.Date == data.Date).ToList();
+        }
         public VendaModel BuscarVenda(int id)
         {
             return _bancoContext.Venda.FirstOrDefault(x => x.Id ==  id);
         }
+        
 
         public bool ExcluirConfirma(int id)
         {
@@ -31,6 +36,7 @@ namespace CrudMVC.Ropositorio
             _bancoContext.SaveChanges();
             return true;
         }
+
 
         public List<VendaModel> ListarVendas()
         {

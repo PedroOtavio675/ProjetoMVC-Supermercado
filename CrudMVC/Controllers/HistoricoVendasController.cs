@@ -15,12 +15,23 @@ namespace CrudMVC.Controllers
         }
         public IActionResult Index()
         {
-            var vendas = _vendaRepositorio.ListarVendas();
-            
-        
+            List<VendaModel> vendas;
+          
+               vendas = _vendaRepositorio.ListarVendas();
+          
          
             return View(vendas);
         }
+        public IActionResult IndexTeste(DateTime data)
+        {
+            List<VendaModel> vendas;
+            
+                vendas = _vendaRepositorio.BuscarVendasPorData(data);
+          
+            return View(vendas);
+        }
+
+
         public IActionResult VerProdutos(int id)
         {
            var itens = _vendaRepositorio.BuscarItensVenda(id);

@@ -1,0 +1,48 @@
+﻿@model List<VendaModel>
+
+<h1>Historico de vendas</h1>
+<p>Buscar vendas por data</p>
+<form method="get" asp-action="IndexTeste" asp-controller="HistoricoVendas">
+    <input type="date" name="data" value="" />
+    <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+@if (Model != null)
+{
+    @foreach (VendaModel venda in Model)
+    {
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Codigo da venda</th>
+
+
+                    <th scope="col">Total R$</th>
+
+                    <th scope="col">Data</th>
+                    <th scope="col"></th>
+                    <th scope="col">Remover</th>
+                </tr>
+            </thead>
+            <tr>
+                <th scope="row">@venda.Id</th>
+                <td>@(venda.TotalGeral)</td>
+                <td>@venda.Data</td>
+                <td>
+                    <a type="button" class="btn btn-success" asp-route-id="@venda.Id" asp-action="VerProdutos" asp-controller="HistoricoVendas">Ver itens da venda</a>
+                </td>
+
+                <td>
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-danger" asp-route-id="@venda.Id" asp-action="ExcluirConfirma" asp-controller="HistoricoVendas">Remover</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    }
+}
+else
+{
+    <h1>Deu bosta</h1>
+}
+

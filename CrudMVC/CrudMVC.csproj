@@ -30,6 +30,7 @@
   <ItemGroup>
     <Compile Remove="Controllers\AtualizarController.cs" />
     <Compile Remove="Controllers\RemoverController.cs" />
+    <Compile Remove="Views\HistoricoVendas\IndexTeste.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -38,7 +39,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Views\HistoricoVendas\StyleSheet.css" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.5.1" />
+    <PackageReference Include="EntityFramework" Version="6.5.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.10">
       <PrivateAssets>all</PrivateAssets>

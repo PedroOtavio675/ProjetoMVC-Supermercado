@@ -1,6 +1,11 @@
 ﻿@model List<VendaModel>
 
 <h1>Historico de vendas</h1>
+<p>Buscar vendas por data</p>
+<form method="get" asp-action="IndexTeste" asp-controller="HistoricoVendas">
+<input type="date" name="data" value="" />
+<button type="submit" class="btn btn-primary">Buscar</button>
+</form>
 @if(Model != null)
 {
     @foreach (VendaModel venda in Model)
